@@ -10,6 +10,7 @@ import sn.isi.ebanking_backend.enums.OperationType;
 import sn.isi.ebanking_backend.repositories.AccountOperationRepository;
 import sn.isi.ebanking_backend.repositories.BankAccountRepository;
 import sn.isi.ebanking_backend.repositories.CustomerRepository;
+import sn.isi.ebanking_backend.services.BankService;
 
 import java.util.Date;
 import java.util.UUID;
@@ -21,7 +22,7 @@ public class EbankingBackendApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(EbankingBackendApplication.class, args);
 	}
-	@Bean
+	//@Bean
 	CommandLineRunner start(CustomerRepository customerRepository,
 							BankAccountRepository bankAccountRepository,
 							AccountOperationRepository accountOperationRepository){
@@ -63,6 +64,12 @@ public class EbankingBackendApplication {
 					accountOperationRepository.save(accountOperation);
 				}
 			});
+		};
+	}
+	@Bean
+	CommandLineRunner commandLineRunner(BankService bankService){
+		return args -> {
+			bankService.consulter();
 		};
 	}
 }
