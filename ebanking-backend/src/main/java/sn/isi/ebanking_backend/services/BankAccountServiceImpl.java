@@ -91,7 +91,7 @@ public class BankAccountServiceImpl implements BankAccountService{
         List<CustomerDTO> customerDTOList = customers.stream()
                 .map(cust -> dtoMapper.customerToCustomerDTO(cust))
                 .collect(Collectors.toList());
-        // Programmation fonctionelle
+        // Programmation imperative
 //        List<CustomerDTO> customerDTOList = new ArrayList<>();
 //        for (Customer customer : customers){
 //            CustomerDTO customerDTO = dtoMapper.customerToCustomerDTO(customer);
