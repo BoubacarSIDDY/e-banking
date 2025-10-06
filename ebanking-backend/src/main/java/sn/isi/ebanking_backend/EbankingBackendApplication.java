@@ -11,14 +11,11 @@ import sn.isi.ebanking_backend.dtos.SavingAccountDTO;
 import sn.isi.ebanking_backend.entities.*;
 import sn.isi.ebanking_backend.enums.AccountStatus;
 import sn.isi.ebanking_backend.enums.OperationType;
-import sn.isi.ebanking_backend.exceptions.BalanceNotSufficentException;
-import sn.isi.ebanking_backend.exceptions.BankAccountNotFoundException;
 import sn.isi.ebanking_backend.exceptions.CustomerNotFoundException;
 import sn.isi.ebanking_backend.repositories.AccountOperationRepository;
 import sn.isi.ebanking_backend.repositories.BankAccountRepository;
 import sn.isi.ebanking_backend.repositories.CustomerRepository;
 import sn.isi.ebanking_backend.services.BankAccountService;
-import sn.isi.ebanking_backend.services.BankService;
 
 import java.util.Date;
 import java.util.List;
