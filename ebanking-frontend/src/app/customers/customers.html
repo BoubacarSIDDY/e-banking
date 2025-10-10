@@ -1,5 +1,8 @@
 <div class="container mt-2">
   <div class="card" *ngIf="customers">
+    @if (errorMessage){
+      <div class="text-danger">{{errorMessage | json}}</div>
+    }
     <div class="card-header">
       <table class="table">
         <thead>

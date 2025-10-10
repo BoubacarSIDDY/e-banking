@@ -1,28 +1,31 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {NgForOf, NgIf} from '@angular/common';
+import {JsonPipe, NgForOf, NgIf} from '@angular/common';
+import {Customer} from '../services/customer';
 
 @Component({
   selector: 'app-customers',
   imports: [
     NgForOf,
-    NgIf
+    NgIf,
+    JsonPipe
   ],
   templateUrl: './customers.html',
   styleUrl: './customers.css'
 })
 export class Customers implements OnInit {
   customers : any;
-  constructor(private http: HttpClient) {
+  errorMessage ?: string;
+  constructor(private customerService : Customer) {
   }
 
   ngOnInit(): void {
-    this.http.get('http://localhost:8085/customers').subscribe({
+    this.customerService.getCustomers().subscribe({
       next: data => {
         this.customers = data;
       },
-      error: err => {
-        console.log(err);
+      error: error => {
+        this.errorMessage = error;
       }
     })
   }
