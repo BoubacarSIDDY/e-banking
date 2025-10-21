@@ -13,6 +13,7 @@ public interface BankAccountService {
     CurrentAccountDTO saveCurrentBankAccount(double initialBalance, double overDraft, Long customerId) throws CustomerNotFoundException;
     SavingAccountDTO saveSavingBankAccount(double initialBalance, double interestRate, Long customerId) throws CustomerNotFoundException;
     List<CustomerDTO> listCustomers();
+    List<CustomerDTO> searchCustomers(String keyword);
     CustomerDTO getCustomer(Long customerId) throws CustomerNotFoundException;
     BankAccountDTO getBankAccount(String accountId) throws BankAccountNotFoundException;
     void debit(String accountId, double amount, String description) throws BankAccountNotFoundException, BalanceNotSufficentException;

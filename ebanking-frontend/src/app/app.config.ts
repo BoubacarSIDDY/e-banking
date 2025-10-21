@@ -7,6 +7,11 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes)
+    provideRouter(routes),
+    // Configuration spécifique à l'environnement
+    {
+      provide : 'backendHost',
+      useValue: "http://localhost8085"
+    }
   ]
 };

@@ -4,9 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import sn.isi.ebanking_backend.dtos.AccountHistoryDTO;
-import sn.isi.ebanking_backend.dtos.AccountOperationDTO;
-import sn.isi.ebanking_backend.dtos.BankAccountDTO;
+import sn.isi.ebanking_backend.dtos.*;
 import sn.isi.ebanking_backend.exceptions.BankAccountNotFoundException;
 import sn.isi.ebanking_backend.services.BankAccountService;
 
@@ -42,5 +40,22 @@ public class BankAccountRestController {
                                                      @RequestParam(name = "size", defaultValue = "5") int size)
             throws BankAccountNotFoundException {
         return bankAccountService.getAccountHistory(accountId,page,size);
+    }
+    @PostMapping("/accounts/debit")
+    public DebitDTO debit(@RequestBody DebitDTO debitDTO){
+        this.bankAccountService.debit(debitDTO.getAccountId(),debitDTO.getAmount(),debitDTO.getDescription());
+        return debitDTO;
+    }
+    @PostMapping("/accounts/credit")
+    public DebitDTO credit(@RequestBody CreditDTO creditDTO){
+        this.bankAccountService.debit(creditDTO.getAccountId(),creditDTO.getAmount(),creditDTO.getDescription());
+        return creditDTO;
+    }
+    @PostMapping("/accounts/transfer")
+    public void transfer(@RequestBody TransferRequestDTO transferRequestDTO){
+        this.bankAccountService.virement(
+                transferRequestDTO.getAccountSource(),
+                transferRequestDTO.getAccountDestination(),
+                transferRequestDTO.getAmount());
     }
 }
