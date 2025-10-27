@@ -16,6 +16,7 @@ import {Router} from '@angular/router';
     ReactiveFormsModule
   ],
   templateUrl: './customers.html',
+  standalone: true,
   styleUrl: './customers.css'
 })
 export class Customers implements OnInit {
